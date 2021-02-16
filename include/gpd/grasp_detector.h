@@ -71,11 +71,15 @@ class GraspDetector {
    */
   GraspDetector(const std::string &config_filename);
 
+
+  std::string vectorToString(const Eigen::VectorXd &v) const;
   /**
    * \brief Detect grasps in a point cloud.
    * \param cloud_cam the point cloud
    * \return list of grasps
    */
+  std::vector<std::unique_ptr<candidate::Hand>> procGrasps(
+      const util::Cloud &cloud);
   std::vector<std::unique_ptr<candidate::Hand>> detectGrasps(
       const util::Cloud &cloud);
 

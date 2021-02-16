@@ -302,7 +302,7 @@ std::vector<Hand> detectGrasps(const std::string &config_filename,
   detector.preprocessPointCloud(cloud_cam);
 
   // Detect grasps.
-  std::vector<Hand> hands = detector.detectGrasps(cloud_cam);
+  std::vector<Hand> hands = detector.procGrasps(cloud_cam);
 
   return hands;
 }

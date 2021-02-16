@@ -1,4 +1,7 @@
-# Grasp Pose Detection (GPD)
+# Grasp Pose Detection Python Interface
+
+A few simple modifications of gpd interface with it from python
+
 
 * [Author's website](http://www.ccs.neu.edu/home/atp/)
 * [License](https://github.com/atenpas/gpd/blob/master/LICENSE.md)
