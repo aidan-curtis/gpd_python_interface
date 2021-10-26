@@ -274,8 +274,7 @@ std::vector<std::unique_ptr<candidate::Hand>> GraspDetector::procGrasps(
            << std::to_string(gstruct[i].orient[0]) + "," + std::to_string(gstruct[i].orient[1]) + "," + std::to_string(gstruct[i].orient[2]) + "," + std::to_string(gstruct[i].orient[3]) + "," 
            << std::to_string(gstruct[i].score) << ","
            << std::to_string(hands[i]->getBinormal()[0]) << "," << std::to_string(hands[i]->getBinormal()[1]) << "," << std::to_string(hands[i]->getBinormal()[2]) << ","
-           << std::to_string(hands[i]->getApproach()[0]) << "," << std::to_string(hands[i]->getApproach()[1]) << "," << std::to_string(hands[i]->getApproach()[2])
-           << "\n";
+           << std::to_string(hands[i]->getApproach()[0]) << "," << std::to_string(hands[i]->getApproach()[1]) << "," << std::to_string(hands[i]->getApproach()[2]);
   }
 
   myfile.close();
