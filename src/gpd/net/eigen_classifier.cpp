@@ -26,6 +26,7 @@ EigenClassifier::EigenClassifier(const std::string &model_file,
 
   // Set weights and biases.
   const std::string &params_dir = weights_file;
+  std::cout<<" EigenClassifier params file"<<params_dir<<std::endl;
   std::vector<float> w_vec =
       readBinaryFileIntoVector(params_dir + "conv1_weights.bin");
   std::vector<float> b_vec =
@@ -58,17 +59,25 @@ EigenClassifier::EigenClassifier(const std::string &model_file,
 
 std::vector<float> EigenClassifier::classifyImages(
     const std::vector<std::unique_ptr<cv::Mat>> &image_list) {
+
+  std::cout<<" EigenClassifier classifying images"<<std::endl;
+
   std::vector<float> predictions;
   predictions.resize(image_list.size());
+
+std::cout<<image_list.size()<<std::endl;
 
 #ifdef _OPENMP  // parallelization using OpenMP
 #pragma omp parallel for num_threads(num_threads_)
 #endif
   for (int i = 0; i < image_list.size(); i++) {
+      std::cout<<" sequential "<<i<<std::endl;
     if (image_list[i]->isContinuous()) {
       std::vector<float> x = imageToArray(*image_list[i]);
-
+      std::cout<<" forwarding"<<std::endl;
       std::vector<float> predictions_i = forward(x);
+      std::cout<<" done forwarding"<<std::endl;
+
       //      std::cout << i << " -- positive score: " << yi[1] << ", negative
       //      score: " << yi[0] << "\n";
       predictions[i] = predictions_i[1] - predictions_i[0];

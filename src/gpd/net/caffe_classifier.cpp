@@ -26,6 +26,8 @@ CaffeClassifier::CaffeClassifier(const std::string &model_file,
 
 std::vector<float> CaffeClassifier::classifyImages(
     const std::vector<std::unique_ptr<cv::Mat>> &image_list) {
+
+  std::cout<<"classifying images"<<std::endl;
   int batch_size = input_layer_->batch_size();
   int num_iterations = (int)ceil(image_list.size() / (double)batch_size);
   float loss = 0.0;
@@ -71,6 +73,7 @@ std::vector<float> CaffeClassifier::classifyImages(
       predictions.push_back(out[2 * l + 1] - out[2 * l]);
     }
   }
+  std::cout<<"done classifying images"<<std::endl;
 
   return predictions;
 }

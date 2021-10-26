@@ -38,6 +38,8 @@ OpenVinoClassifier::OpenVinoClassifier(const std::string &model_file,
 
 std::vector<float> OpenVinoClassifier::classifyImages(
     const std::vector<std::unique_ptr<cv::Mat>> &image_list) {
+
+  std::cout<<"classifying images"<<std::endl;
   std::vector<float> predictions(0);
   InputsDataMap input_info = network_.getInputsInfo();
 
@@ -93,7 +95,7 @@ std::vector<float> OpenVinoClassifier::classifyImages(
       }
     }
   }
-
+  std::cout<<"done classifying images"<<std::endl;
   return predictions;
 }
 

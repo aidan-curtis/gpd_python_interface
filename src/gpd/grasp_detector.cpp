@@ -263,7 +263,7 @@ std::vector<std::unique_ptr<candidate::Hand>> GraspDetector::procGrasps(
     hands[i]->setScore(scores[i]);
   }
 
-  std::string filename = "/home/parallels/open-world-tamp/temp/grasps.txt";
+  std::string filename = "/home/aidan/ManiSkill/temp/grasps.txt";
   std::ofstream myfile;
   myfile.open(filename.c_str());
 
@@ -272,7 +272,10 @@ std::vector<std::unique_ptr<candidate::Hand>> GraspDetector::procGrasps(
     std::cout << "Grasp " << i << std::endl;
     myfile << std::to_string(gstruct[i].pos[0]) + "," + std::to_string(gstruct[i].pos[1]) + "," + std::to_string(gstruct[i].pos[2]) + ","
            << std::to_string(gstruct[i].orient[0]) + "," + std::to_string(gstruct[i].orient[1]) + "," + std::to_string(gstruct[i].orient[2]) + "," + std::to_string(gstruct[i].orient[3]) + "," 
-           << std::to_string(gstruct[i].score) << "\n";
+           << std::to_string(gstruct[i].score) 
+           << std::to_string(hands[i]->getBinormal()[0]) << "," << std::to_string(hands[i]->getBinormal()[1]) << "," << std::to_string(hands[i]->getBinormal()[2]) << ","
+           << std::to_string(hands[i]->getApproach()[0]) << "," << std::to_string(hands[i]->getApproach()[1]) << "," << std::to_string(hands[i]->getApproach()[2]) << ","
+           << "\n";
   }
 
   myfile.close();
