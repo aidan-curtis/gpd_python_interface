@@ -53,8 +53,7 @@ def generate_grasps(pc, pc_color):
 		line = file1.readline()
 
 		items = line.split("\n")[0].split(",")
-		if(len(items) == 8):
-			grasps.append([float(i) for i in items])
+		grasps.append([float(i) for i in items])
 	 
 		# if line is empty
 		# end of file is reached
